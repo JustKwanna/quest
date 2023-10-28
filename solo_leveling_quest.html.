@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Solo Leveling Quest</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #00b7d3;
+        }
+
+        h2 {
+            color: #00b7d3;
+        }
+
+        .card {
+            background-color: #393939;
+            color: #fff;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            background-color: #00b7d3;
+        }
+
+        #ongoing-quest, #new-quest {
+            margin: 20px;
+        }
+
+        #new-quest {
+            display: none;
+        }
+
+        button {
+            background-color: #00b7d3;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #008ca5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Solo Leveling Quest</h1>
+
+    <div id="ongoing-quest">
+        <h2>Ongoing Quest</h2>
+        <p id="quest-description">Complete the first quest: Gather 10 mystical herbs from the Enchanted Forest.</p>
+        <button onclick="completeQuest()">Complete Quest</button>
+    </div>
+
+    <div id="card-selection" style="display: none;">
+        <h2>Card Selection</h2>
+        <p>Select a card to receive a new quest:</p>
+        <div id="cards">
+            <div class="card" onclick="showNewQuest('Common')">Common</div>
+            <div class="card" onclick="showNewQuest('Rare')">Rare</div>
+            <div class="card" onclick="showNewQuest('Legendary')">Legendary</div>
+            <div class="card" onclick="showNewQuest('Mythic')">Mythic</div>
+        </div>
+    </div>
+
+    <div id="new-quest">
+        <h2>New Quest</h2>
+        <p id="quest-description">Description of the new quest will appear here.</p>
+    </div>
+
+    <script>
+        let ongoingQuest = false;
+
+        function completeQuest() {
+            if (!ongoingQuest) {
+                return;
+            }
+
+            ongoingQuest = false;
+            document.getElementById('ongoing-quest').style.display = 'none';
+            document.getElementById('card-selection').style.display = 'block';
+        }
+
+        function showNewQuest(cardType) {
+            if (ongoingQuest) {
+                return;
+            }
+
+            let questDescription = '';
+
+            if (cardType === 'Common') {
+                questDescription = 'Common Quest: Gather 5 mystical herbs from the Enchanted Forest.';
+            } else if (cardType === 'Rare') {
+                questDescription = 'Rare Quest: Explore the Cavern of Secrets and retrieve a valuable artifact.';
+            } else if (cardType === 'Legendary') {
+                questDescription = 'Legendary Quest: Develop the ability to read others\' minds. Start by practicing empathy and active listening.';
+            } else if (cardType === 'Mythic') {
+                questDescription = 'Mythic Quest: The quest of mythic proportions awaits! Seek the ancient knowledge of the Library of Legends.';
+            }
+
+            document.getElementById('quest-description').innerText = questDescription;
+            ongoingQuest = true;
+            document.getElementById('ongoing-quest').style.display = 'block';
+            document.getElementById('card-selection').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
