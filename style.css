@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#quest-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+button {
+    margin: 5px;
+}
